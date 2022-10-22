@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksimpartic_doc=self.webpackChunksimpartic_doc||[]).push([[5897],{4469:s=>{s.exports=JSON.parse('{"name":"docusaurus-plugin-content-blog","id":"default"}')}}]);
