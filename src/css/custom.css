@@ -6,7 +6,24 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e3436;
+  --sipa-color-green: #61a517;
+  --sipa-color-green-dark: #4a7e12;
+  --sipa-color-yellow: #ffc005;
+  --sipa-color-yellow-dark: #dfa600;
+  --sipa-color-yellow-light: #fac62c;
+    --sipa-color-gray: #2e3436;
+  --ifm-link-color: var(--sipa-color-yellow-dark);
+    --ifm-breadcrumb-color-active: #000;
+    --ifm-breadcrumb-hover-color: #000;
+    --ifm-breadcrumb-item-hover-color: #000;
+  --ifm-breadcrumb-item-background-active: var(--sipa-color-yellow);
+  --ifm-navbar-link-hover-color: var(--sipa-color-green);
+  --ifm-heading-color: var(--sipa-color-green);
+  --ifm-h3-font-size: var(--ifm-heading-color);
+  --ifm-menu-color-background-active: var(--sipa-color-yellow-light);
+  --ifm-color-primary: var(--sipa-color-green);
+  --ifm-menu-color-active: #000;
+    --ifm-hero-background-color: var(--sipa-color-gray);
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
   --ifm-color-primary-darkest: #205d3b;
@@ -15,11 +32,23 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-footer-background-color: #2e3436;
+  --test-color: #333;
+ --ifm-footer-link-hover-color: var(--sipa-color-yellow);
 }
+
+
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
+  --test-color: #555555;
+ --ifm-menu-color-active: white;
+  --ifm-menu-color-background-active: var(--sipa-color-green-dark);
+  --ifm-breadcrumb-color-active: var(--sipa-color-green);
+  --ifm-link-color: var(--sipa-color-green);
+    --ifm-heading-color: var(--sipa-color-yellow);
+    --ifm-breadcrumb-item-background-active: rgba(255, 255, 255, 0.05);
+  --ifm-pagination-nav-color-hover: var(--sipa-color-green);
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
   --ifm-color-primary-darkest: #1a8870;
@@ -27,4 +56,32 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .breadcrumbs__link:any-link:hover {
+    color: #000;
+}
+
+[data-theme='light'] [itemprop='blogPost'] header h2 a {
+    color: var(--sipa-color-green);
+}
+
+[data-theme='dark'] [itemprop='blogPost'] header h2 a {
+    color: var(--sipa-color-yellow);
+}
+
+li[class^='tag_node'] a {
+    color: var(--sipa-color-green);
+}
+
+.footer--dark {
+    --ifm-footer-background-color: var(--sipa-color-gray);
+}
+
+.hero {
+    background-color: var(--sipa-color-gray);
+}
+
+a.table-of-contents__link--active, a.table-of-contents__link--active:hover {
+  color: var(--sipa-color-green);
 }

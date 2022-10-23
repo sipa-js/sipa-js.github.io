@@ -50,7 +50,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Tutorial',
-      items: ['tutorial-basics/create-a-document'],
+      items: ['guides-basics/create-a-document'],
     },
   ],
 };
