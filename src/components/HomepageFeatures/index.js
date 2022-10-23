@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Particularly Simple',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/pages/home/js_html_css.svg').default,
     description: (
       <>
           Simpartic tries to stick as close as possible to the original HTML
