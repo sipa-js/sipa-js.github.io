@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksimpartic_doc=self.webpackChunksimpartic_doc||[]).push([[6514],{6346:a=>{a.exports=JSON.parse('{"label":"info","permalink":"/blog/tags/info","allTagsPath":"/blog/tags","count":1}')}}]);
