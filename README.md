@@ -1,4 +1,13 @@
-# Website
+# Simpartic documentation
+[![License: LGPLv3](https://img.shields.io/badge/License-LGPLv3-fabd09.svg?style=plastic)](LICENSE)
+
+This is the official repository for the Simpartic documentation at:
+https://simpartic.github.io/
+
+You can find the offical Simpartic repository at:
+https://github.com/simpartic/simpartic
+
+## Info
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 

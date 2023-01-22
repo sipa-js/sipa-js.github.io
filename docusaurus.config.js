@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Simpartic',
-  tagline: '',
+  tagline: '!!! <under heavy construction> !!!',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -59,9 +59,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
       navbar: {
-        title: 'Simpartic',
+        title: 'SIMPARTIC',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'My Site SIMPARTIC',
           src: 'img/simpartic/favicon.svg',
         },
         items: [
@@ -89,11 +89,11 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'News',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/guides/intro',
+                label: 'Blog',
+                to: '/blog',
               },
             ],
           },
@@ -102,25 +102,13 @@ const config = {
             items: [
               {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
+                href: 'https://stackoverflow.com/questions/tagged/simpartic',
+              }
             ],
           },
           {
-            title: 'More',
+            title: 'Network',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/simpartic/simpartic.github.io',
@@ -128,7 +116,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `<small style="color: #ffc005">Copyright © ${new Date().getFullYear()} by Contributors (LGPLv3). Built with Docusaurus.</small>`,
       },
       prism: {
         theme: lightCodeTheme,
