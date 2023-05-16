@@ -1,7 +1,7 @@
 ---
 slug: long-blog-post
-title: Long Blog Post
-tags: [hello, docusaurus]
+title: 'Example: Long Blog Post'
+tags: [docusaurus]
 ---
 
 This is the summary of a very long blog post,

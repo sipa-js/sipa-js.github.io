@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Create a Document
+# Create a new page
 
 Documents are **groups of pages** connected through:
 
@@ -50,7 +50,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Tutorial',
-      items: ['guides-basics/create-a-document'],
+      items: ['guides-basics/create-a-new-page'],
     },
   ],
 };

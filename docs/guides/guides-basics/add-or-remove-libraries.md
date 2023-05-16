@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 ---
 
-# Markdown Features
+# Add or remove libraries
 
 Docusaurus supports **[Markdown](https://daringfireball.net/projects/markdown/syntax)** and a few **additional features**.
 
@@ -30,14 +30,14 @@ Markdown text with [links](./hello.md)
 Regular Markdown links are supported, using url paths or relative file paths.
 
 ```md
-Let's see how to [Create a page](/create-a-page).
+Let's see how to [Create a page](/create-a-new-project).
 ```
 
 ```md
-Let's see how to [Create a page](./create-a-page.md).
+Let's see how to [Create a page](./create-a-new-project.md).
 ```
 
-**Result:** Let's see how to [Create a page](./create-a-page.md).
+**Result:** Let's see how to [Create a page](./create-a-new-project.md).
 
 ## Images
 
@@ -51,7 +51,7 @@ You can use absolute paths to reference images in the static directory (`static/
 
 ![Docusaurus logo](/img/docusaurus.png)
 
-You can reference images relative to the current file as well, as shown in [the extra guides](../guides-extras/manage-docs-versions.md).
+You can reference images relative to the current file as well, as shown in [the extra guides](../guides-extras/buid-hooks.md).
 
 ## Code Blocks
 

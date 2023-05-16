@@ -14,13 +14,15 @@ const FeatureList = [
           <br/><br/>
           Did you have the impression that completely new worlds were developed there, as if you had to learn a new language?
           <br/><br/>
-          Did you have the impression that development used to be much easier and more intuitive?
+          Did you have the impression that development used to be much easier and more intuitive before this frameworks appeared?
           <br/><br/>
           Does it annoy you that you write code that has not much to do with the code that is executed in the browser? Would you rather just be able to run and debug your code in the browser?
           <br/><br/>
-          So have you considered maybe just building your own framework again?
+          Do you prefer to choose the libraries you need and combine them to your own project?
           <br/><br/>
-          If you find yourself somewhere in the questions here, it could be that you might really like Simpartic.
+          Have you considered building your own lightweight framework and add the libraries you need to?
+          <br/><br/>
+          If you find yourself somewhere in the questions here, you might really like Simpartic.
           <br/><br/>
       </>
     ),
@@ -32,12 +34,12 @@ const FeatureList = [
           <>
               I just want to develop with Javascript: The code i write IS the code i run in the browser.
               <br/><br/>
-              Writing Javascript and HTML the old way! So I can directly run and debug my code in the browser. Instant!
+              Writing Javascript and HTML the old way! So I can directly run and debug my code in the browser without any special tools. Instantly!
               <br/><br/>
               Intensive transpiling (minifying) will (can!) finally happen when creating a production build. I even can create a single file production build out of the box! (Feature not yet implemented)
               <br/><br/>
               I don't want to learn a new framework world.
-              I can JavaScript, I want to do JavaScript. I want it simple, I want it stupid easy. So i can add whatever I want if I need to.
+              I can JavaScript, I want to do JavaScript. I want it simple, I want it stupid easy. So i can add whatever library I want if I need to.
               <br/><br/>
               A framework that gives me a frame, but doesn't force me into it.
               <br/><br/>
@@ -55,12 +57,12 @@ const FeatureList = [
               <li>Simple but powerful page pattern structure with loader / router</li>
               <li>Live development web server for JavaScript and SCSS</li>
               <li>Life cycle with hook feature</li>
-              <li>Internationalization out of the box ![State](https://img.shields.io/badge/-todo-blue)</li>
+              <li>Internationalization out of the box #TODO</li>
               <li>Global state storage to keep state on three different persistence levels</li>
               <li>Builder to create compressed and minified .js and .css for production</li>
               <li>Optionally:
                 <ul>
-                    <li>EJS template engine (optional) ![State](https://img.shields.io/badge/-prepared-blue)</li>
+                    <li>EJS template engine (optional) #PREPARED</li>
                     <li>Good old jQuery</li>
                 </ul>
               </li>
@@ -69,7 +71,7 @@ const FeatureList = [
           To get an overview and idea about the framework, have a look at <div className={styles.buttons}>
           <Link
               className="button button--secondary button--lg"
-              to="/docs/guides/intro">
+              to="/docs/guides/overview">
               Getting started ⏱️
           </Link>
       </div>
