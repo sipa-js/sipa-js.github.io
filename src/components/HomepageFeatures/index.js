@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Current javascript framework hype',
+    title: 'Javascript framework hype',
     Svg: require('@site/static/img/pages/home/angular_react_vue.svg').default,
     description: (
       <>
