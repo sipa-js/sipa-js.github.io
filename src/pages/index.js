@@ -12,7 +12,7 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <img src={'img/simpartic/logo_doc.svg'}/>
+        <img src={'img/sipa/logo_doc.svg'}/>
         <p className="hero__subtitle" style={{color: "#ff0505"}}>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link

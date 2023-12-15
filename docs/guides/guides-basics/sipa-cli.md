@@ -2,11 +2,11 @@
 sidebar_position: 1
 ---
 
-# Simpartic CLI
+# Sipa CLI
 
-Simpartic provides a powerful command line interface (CLI) to support the developer on his daily work.
+Sipa provides a powerful command line interface (CLI) to support the developer on his daily work.
 
-You can either use the long name `simpartic` or its cool short cut `sipa` on the command line.
+Usually you just use the `sipa` command. For backward compatibility you can still use the long name `simpartic`.
 
 With the CLI you can
 * Create new projects

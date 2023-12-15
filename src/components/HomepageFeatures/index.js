@@ -22,13 +22,13 @@ const FeatureList = [
           <br/><br/>
           Have you considered building your own lightweight framework and add the libraries you need to?
           <br/><br/>
-          If you find yourself somewhere in the questions here, you might really like Simpartic.
+          If you find yourself somewhere in the questions here, you might really like Sipa.
           <br/><br/>
       </>
     ),
   },
   {
-      title: 'Why Simpartic?',
+      title: 'Why Sipa?',
       Svg: require('@site/static/img/pages/home/js_html_css.svg').default,
       description: (
           <>
@@ -49,7 +49,7 @@ const FeatureList = [
   },
   {
     title: 'Main features',
-    Svg: require('@site/static/img/pages/home/simpartic_features.svg').default,
+    Svg: require('@site/static/img/pages/home/sipa_features.svg').default,
     description: (
       <>
           <ul style={{textAlign: "left"}}>

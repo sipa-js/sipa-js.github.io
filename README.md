@@ -1,11 +1,11 @@
-# Simpartic documentation
+# Sipa documentation
 [![License: LGPLv3](https://img.shields.io/badge/License-LGPLv3-fabd09.svg?style=plastic)](LICENSE)
 
-This is the official repository for the Simpartic documentation at:
-https://simpartic.github.io/
+This is the official repository for the Sipa documentation at:
+https://sipa-js.github.io/
 
-You can find the offical Simpartic repository at:
-https://github.com/simpartic/simpartic
+You can find the offical Sipa repository at:
+https://github.com/sipa-js/sipa
 
 ## Info
 

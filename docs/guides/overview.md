@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Overview
 
-Welcome to the Simpartic tutorial!
+Welcome to the Sipa tutorial!
 
 ## Getting Started
 

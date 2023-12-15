@@ -6,18 +6,18 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: 'Simpartic',
+    title: 'Sipa',
     tagline: '!!! <under heavy construction> !!!',
     url: 'https://your-docusaurus-test-site.com',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
-    favicon: 'img/simpartic/favicon.svg',
+    favicon: 'img/sipa/favicon.svg',
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'magynhard', // Usually your GitHub org/user name.
-    projectName: 'simpartic.github.io', // Usually your repo name.
+    projectName: 'sipa-js.github.io', // Usually your repo name.
     deploymentBranch: 'gh-pages',
     trailingSlash: false,
 
@@ -39,14 +39,14 @@ const config = {
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl:
-                        'https://github.com/simpartic/simpartic.github.io/tree/main/packages/create-docusaurus/templates/shared/',
+                        'https://github.com/sipa-js/sipa-js.github.io/tree/main/packages/create-docusaurus/templates/shared/',
                 },
                 blog: {
                     showReadingTime: true,
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl:
-                        'https://github.com/simpartic/simpartic.github.io/tree/main/packages/create-docusaurus/templates/shared/',
+                        'https://github.com/sipa-js/sipa-js.github.io/tree/main/packages/create-docusaurus/templates/shared/',
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
@@ -59,10 +59,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         {
             navbar: {
-                title: 'SIMPARTIC',
+                title: 'SIPA',
                 logo: {
-                    alt: 'My Site SIMPARTIC',
-                    src: 'img/simpartic/favicon.svg',
+                    alt: 'My Site SIPA',
+                    src: 'img/sipa/favicon.svg',
                 },
                 items: [
                     {
@@ -79,7 +79,7 @@ const config = {
                     },
                     {to: '/blog', label: 'Blog', position: 'left'},
                     {
-                        href: 'https://github.com/simpartic/simpartic.github.io',
+                        href: 'https://github.com/sipa-js/sipa-js.github.io',
                         label: 'GitHub',
                         position: 'right',
                     },
@@ -102,7 +102,7 @@ const config = {
                         items: [
                             {
                                 label: 'Stack Overflow',
-                                href: 'https://stackoverflow.com/questions/tagged/simpartic',
+                                href: 'https://stackoverflow.com/questions/tagged/sipa-js',
                             }
                         ],
                     },
@@ -111,7 +111,7 @@ const config = {
                         items: [
                             {
                                 label: 'GitHub',
-                                href: 'https://github.com/simpartic/simpartic.github.io',
+                                href: 'https://github.com/sipa-js/sipa-js.github.io',
                             },
                         ],
                     },
