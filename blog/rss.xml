@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Sipa Blog</title>
-        <link>https://your-docusaurus-test-site.com/blog</link>
+        <link>https://sipa-js.github.io/blog</link>
         <description>Sipa Blog</description>
         <lastBuildDate>Tue, 16 May 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,7 +10,7 @@
         <language>en</language>
         <item>
             <title><![CDATA[Welcome!]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/welcome</link>
+            <link>https://sipa-js.github.io/blog/welcome</link>
             <guid>welcome</guid>
             <pubDate>Tue, 16 May 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Welcome to the Sipa blog!]]></description>
@@ -21,7 +21,7 @@ It was long overdue to provide detailed documentation. </p><p>By using <a href="
         </item>
         <item>
             <title><![CDATA[Example: Long Blog Post]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/long-blog-post</link>
+            <link>https://sipa-js.github.io/blog/long-blog-post</link>
             <guid>long-blog-post</guid>
             <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[This is the summary of a very long blog post,]]></description>
@@ -30,7 +30,7 @@ It was long overdue to provide detailed documentation. </p><p>By using <a href="
         </item>
         <item>
             <title><![CDATA[Example: Tip]]></title>
-            <link>https://your-docusaurus-test-site.com/blog/mdx-blog-post</link>
+            <link>https://sipa-js.github.io/blog/mdx-blog-post</link>
             <guid>mdx-blog-post</guid>
             <pubDate>Sat, 01 Jan 2000 00:00:00 GMT</pubDate>
             <description><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></description>
