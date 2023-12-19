@@ -6,13 +6,15 @@ sidebar_position: 1
 
 Welcome to the Sipa framework!
 
+:::info
+Sipas framework tools and the libraries for your projects are written in pure JavaScript.
+:::
+
 ## About this documentation
 
 This documentation will show you how to setup Sipa and how to use it by examples. Futhermore it provides a full API documentation about all features included.
 
-### What you'll need 
-
-Sipas framework tools and the libraries for your projects are written in pure JavaScript.
+### What you'll need
 
 Before you can start with the installation of Sipa itself, you need have to be installed
 
