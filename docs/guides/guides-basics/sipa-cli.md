@@ -6,7 +6,9 @@ sidebar_position: 1
 
 Sipa provides a powerful command line interface (CLI) to support the developer on his daily work.
 
+:::info
 Usually you just use the `sipa` command. For backward compatibility you can still use the long name `simpartic`.
+:::
 
 With the Sipa-CLI you can do the following, for example
 * Create new projects
