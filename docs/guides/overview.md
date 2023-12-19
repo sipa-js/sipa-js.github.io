@@ -4,44 +4,30 @@ sidebar_position: 1
 
 # Overview
 
-Welcome to the Sipa tutorial!
+Welcome to the Sipa framework!
 
-## Getting Started
+## About this documentation
 
-Get started by **creating a new site**.
+This documentation will show you how to setup Sipa and how to use it by examples. Futhermore it provides a full API documentation about all features included.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+### What you'll need 
 
-### What you'll need
+Sipas framework tools and the libraries for your projects are written in pure JavaScript.
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+Before you can start with the installation of Sipa itself, you need have to be installed
 
-## Generate a new site
+- [Node.js](https://nodejs.org/en/download/) runtime version 16.x or above
 
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
+After installation you can check if it has been succeeded successfully, by running the following on the command line:
 
 ```bash
-npm init docusaurus@latest my-website classic
+node -v
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
+You should get a output of the node version like this
 
 ```bash
-cd my-website
-npm run start
+v16.18.0
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Then you can read more about [History and why of Sipa](history_and_why) or can continue with the [installation](installation) of Sipa itself.

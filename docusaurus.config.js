@@ -7,8 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
     title: 'Sipa',
-    tagline: '!!! <under heavy construction> !!!',
-    url: 'https://your-docusaurus-test-site.com',
+    tagline: 'documentation template under construction',
+    url: 'https://sipa-js.github.io/',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
@@ -39,14 +39,14 @@ const config = {
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl:
-                        'https://github.com/sipa-js/sipa-js.github.io/tree/main/packages/create-docusaurus/templates/shared/',
+                        'https://github.com/sipa-js/sipa-js.github.io/edit/master/',
                 },
                 blog: {
                     showReadingTime: true,
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl:
-                        'https://github.com/sipa-js/sipa-js.github.io/tree/main/packages/create-docusaurus/templates/shared/',
+                        'https://github.com/sipa-js/sipa-js.github.io/edit/master/',
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
@@ -61,7 +61,7 @@ const config = {
             navbar: {
                 title: 'SIPA',
                 logo: {
-                    alt: 'My Site SIPA',
+                    alt: 'SIPA',
                     src: 'img/sipa/favicon.svg',
                 },
                 items: [

@@ -34,7 +34,7 @@ const FeatureList = [
           <>
               I just want to develop with Javascript: The code i write IS the code i run in the browser.
               <br/><br/>
-              Writing Javascript and HTML the old way! So I can directly run and debug my code in the browser without any special tools. Instantly!
+              Writing Javascript and HTML the old way, but using latest, modern JavaScript! So I can directly run and debug my code in the browser without any special tools. Instantly!
               <br/><br/>
               Intensive transpiling (minifying) will (can!) finally happen when creating a production build. I even can create a single file production build out of the box! (Feature not yet implemented)
               <br/><br/>

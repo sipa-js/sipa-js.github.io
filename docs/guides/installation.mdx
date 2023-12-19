@@ -1,0 +1,56 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Installation
+
+Welcome to installation!
+
+## Install Sipa CLI tools
+
+Sipa provides a simple but powerful set of command line (CLI) tools to make developing web apps comfortable and fun.
+
+### npm vs Yarn
+
+You can install Sipa by using npm or Yarn. npm is the default node package manager. But many people prefer using yarn as it is usually working much faster and gives a better user experience. If you are not sure what to use, then use npm.
+
+If you want to find more about Yarn, you can find more information about it and how to install it, in its official [docs](https://classic.yarnpkg.com/en/docs).
+
+```mdx-code-block
+<Tabs groupId="operating-systems">
+<TabItem value="win" label="npm">
+```
+```bash
+npm install -g sipa
+```
+```mdx-code-block
+</TabItem>
+<TabItem value="bash" label="yarn">
+```
+```bash
+yarn global add sipa
+```
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+## Check Sipa installation
+
+After installing Sipa with the command of the previous section, you can check if its CLI is available on the command line:
+
+```bash
+sipa -v
+```
+
+You should get a response like this:
+```bash
+sipa 0.9.1 @ 2023-12-15T14:21:36.170Z
+```
+
+If you get an error instead, that the command does not exist and used Yarn to install Sipa, ensure that the Yarn bin directory is added to the `PATH` variable as [described in the Yarn docs](https://classic.yarnpkg.com/en/docs/cli/global#adding-the-install-location-to-your-path).
+
+Otherwise you can continue with the [Sipa CLI](guides-basics/sipa-cli).
