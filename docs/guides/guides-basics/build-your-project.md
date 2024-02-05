@@ -33,31 +33,33 @@ which is intended to be versioned and committed in your project.
 There are some options available for your production build that you can set in your `sipa.json` inside the `build: {}`node.
 
 In the following is an example how the node could look like in real project. After the attributes are described.
-```json
-// sipa.json
+```yaml
+# sipa.json
+{
 ...
-"build": {
+  "build": {
     "auto_fix_font_paths_in_css": true,
     "minify": {
-        "css": {
-            "remove_comments": true,
-            "compress": true
-        },
-        "js": {
-            "remove_comments": false,
-            "compress": true
-        }
+      "css": {
+        "remove_comments": true,
+        "compress": true
+      },
+      "js": {
+        "remove_comments": false,
+        "compress": true
+      }
     },
     "static_files_to_copy": {
-        "files": "files",
-        "assets/img": "assets/img",
-        "favicon.ico": "favicon.ico",
-        "manifest.json": "manifest.json"
+      "files": "files",
+      "assets/img": "assets/img",
+      "favicon.ico": "favicon.ico",
+      "manifest.json": "manifest.json"
     }
-}
+  }
 ...
+}
 ```
-| <br>Options for `build` task <br><br>                                                                                                                                                                                                                   |
+| <br/>Options for `build` task <br/><br/>                                                                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `build`.`auto_fix_font_paths_in_css` : Boolean                                                                                                                                                                                                          |
 | Sipas build job automatically puts existing font files of your project into the folder `assets/fonts` and fixes the paths to these font files inside the concatenated css. <br/><br/>                                                                   |
