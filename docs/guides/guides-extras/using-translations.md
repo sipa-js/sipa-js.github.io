@@ -8,7 +8,7 @@ You have just learned the **basics of Docusaurus** and made some changes to the 
 
 Docusaurus has **much more to offer**!
 
-Have **5 more minutes**? Take a look at **[versioning](../guides-extras/buid-hooks.md)** and **[i18n](../guides-extras/project-configuration.md)**.
+Have **5 more minutes**? Take a look at **[versioning](../guides-extras/cli-hooks)** and **[i18n](../guides-extras/project-configuration.md)**.
 
 Anything **unclear** or **buggy** in this tutorial? [Please report it!](https://github.com/sipa-js/sipa.github.io/discussions/4610)
 
