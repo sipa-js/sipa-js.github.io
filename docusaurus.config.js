@@ -73,7 +73,7 @@ const config = {
                     },
                     {
                         type: 'doc',
-                        docId: 'api/api',
+                        docId: 'api/Sipa',
                         position: 'left',
                         label: 'API',
                     },
