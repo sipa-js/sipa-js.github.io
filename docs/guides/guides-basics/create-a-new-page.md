@@ -4,6 +4,28 @@ sidebar_position: 3
 
 # Create a new page
 
+Sipa projects are structured into logical pieces called "pages".
+
+A page consists of 
+* a HTML template file
+* a JS page file
+* a SCSS style sheet file
+
+## Page live cycle
+
+Before a page is loaded, a layout will be loaded first, and then the page will be put into the layout and rendered.
+
+```md title="page live cycle"
+Trigger Page Load -> Layout is loaded -> Page is loaded
+```
+
+## Load another Page
+Another pages can be loaded with `SipaPage` class.
+
+```js
+SipaPage.load('imprint', options);
+```
+
 Documents are **groups of pages** connected through:
 
 - a **sidebar**
