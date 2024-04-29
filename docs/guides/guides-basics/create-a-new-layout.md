@@ -34,7 +34,7 @@ Let's see how to [Create a page](/create-a-new-project).
 ```
 
 ```md
-Let's see how to [Create a page](./create-a-new-project.md).
+Let's see how to [Create a page](./create-a-new-project.mdx).
 ```
 
 **Result:** Let's see how to [Create a page](./create-a-new-project.md).

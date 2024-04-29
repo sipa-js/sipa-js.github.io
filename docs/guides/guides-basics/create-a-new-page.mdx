@@ -11,19 +11,22 @@ A page consists of
 * a JS page file
 * a SCSS style sheet file
 
-## Page live cycle
+## Page life cycle
 
 Before a page is loaded, a layout will be loaded first, and then the page will be put into the layout and rendered.
 
-```md title="page live cycle"
+```md title="page life cycle"
 Trigger Page Load -> Layout is loaded -> Page is loaded
 ```
 
 ## Load another Page
-Another pages can be loaded with `SipaPage` class.
+Another pages can be loaded with `SipaPage` class. When using `onsenui` use the `SipaOnsenPage` class the same way!
 
 ```js
+// desktop
 SipaPage.load('imprint', options);
+// onsenui
+SipaOnsenPage.load('imprint', options);
 ```
 
 Documents are **groups of pages** connected through:

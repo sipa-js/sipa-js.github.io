@@ -1,0 +1,197 @@
+---
+sidebar_position: 6
+---
+
+# Add or remove libraries
+
+When working on a project you often want to add a (S)CSS framework of your choice or need to add a JavaScript library that offers some special features you want to use.
+
+Adding them to your project is very easy by using the Sipa Indexer. 
+
+:::info Sipa Indexer
+Sipa Indexer is a command line tool that can be run by `sipa indexer` or its shortcut `sipa i` at the root of your project directory. It scans for files that have not been included to your `index.html` already and for files that are included there but do not exist anymore.
+
+Then you can decide what files you want to include/exclude or ignore. Sipa indexer then will do the job for you automatically.
+:::
+
+## Example #1: Adding a simple example library
+
+Let's assume we have a library called `foobar` which consists of two files, `code.js` and `style.jss`.
+
+So we just create a folder `foobar` inside `app/assets/lib` and put these two files into it.
+
+Then the file structure should look like this:
+
+```
+├── app
+│ └── assets
+│   └── lib
+│     └── foobar
+│       ├── style.css
+│       └── code.js
+```
+
+Then we run `sipa i` and get the following output:
+
+```
+Files not ignored in sipa.json or not included in index.html
+
+  → [0] assets/lib/foobar/code.js
+  → [1] assets/lib/foobar/style.css
+```
+
+We just enter `0,1` to explicitly add these two files, or easier just `+` (plus) to add all listed files, automatically into our `index.html`.
+
+That's it! The files are included and can be used in our project.
+
+:::info Adding or ignoring files with Sipa indexer
+You can add several files from the list you get by running `sipa i` explicitly separated by comma and optional `+` (plus) prefix.
+To ignore, you prefix the numbers with a `-` (minus).
+
+You even can combine both, for example: `1,5,-3,2,-4`. That will add `1,2,5` and put `3,4` to the ignore list.
+
+To add or ignore the whole list, just type `-` (minus) or `+` (plus).
+:::
+
+## Example #2: Adding compiled Bootstrap 5 to your project
+
+Download the latest compiled distribution [release from Github](https://github.com/twbs/bootstrap/releases). You need the asset ending with `*-dist.zip`, for example [`bootstrap-5.3.3-dist.zip`](https://github.com/twbs/bootstrap/releases/download/v5.3.3/bootstrap-5.3.3-dist.zip).
+
+### Put files into project
+
+Unzip the bootstrap archive in your project at `app/assets/lib/boostrap5`, so the file structure looks like this:
+
+```
+├── app
+│ └── assets
+│   └── lib
+│     └── bootstrap5
+│       └── css
+│         ├── bootstrap.css
+│         ├── bootstrap.rtl.css
+│         ├── bootstrap.grid.css
+│         ├── ...
+│         └── bootstrap.utilities.rtl.css
+│       └── js
+│         ├── boostrap.bundle.js
+│         ├── boostrap.esm.js
+│         ├── ...
+│         └── boostrap.js
+```
+
+### Run Sipa Indexer
+
+The only files we want to include to our project index.html, are `bootstrap.min.css` and `bootstrap.bundle.js`.
+
+With Sipa Indexer, we can include, exclude an ignore files automatically to our `index.html` at the right place.
+
+So we run `sipa i` on the command line in our project directory and get the following output:
+
+```
+Files not ignored in sipa.json or not included in index.html
+
+  → [0] assets/lib/bootstrap5/js/bootstrap.bundle.js
+  → [1] assets/lib/bootstrap5/js/bootstrap.bundle.min.js
+  → [2] assets/lib/bootstrap5/js/bootstrap.esm.js
+  → [3] assets/lib/bootstrap5/js/bootstrap.esm.min.js
+  → [4] assets/lib/bootstrap5/js/bootstrap.js
+  → [5] assets/lib/bootstrap5/js/bootstrap.min.js
+  → [6] assets/lib/bootstrap5/css/bootstrap-grid.css
+  → [7] assets/lib/bootstrap5/css/bootstrap-grid.min.css
+  → [8] assets/lib/bootstrap5/css/bootstrap-grid.rtl.css
+  → [9] assets/lib/bootstrap5/css/bootstrap-grid.rtl.min.css
+  → [10] assets/lib/bootstrap5/css/bootstrap-reboot.css
+  → [11] assets/lib/bootstrap5/css/bootstrap-reboot.min.css
+  → [12] assets/lib/bootstrap5/css/bootstrap-reboot.rtl.css
+  → [13] assets/lib/bootstrap5/css/bootstrap-reboot.rtl.min.css
+  → [14] assets/lib/bootstrap5/css/bootstrap-utilities.css
+  → [15] assets/lib/bootstrap5/css/bootstrap-utilities.min.css
+  → [16] assets/lib/bootstrap5/css/bootstrap-utilities.rtl.css
+  → [17] assets/lib/bootstrap5/css/bootstrap-utilities.rtl.min.css
+  → [18] assets/lib/bootstrap5/css/bootstrap.css
+  → [19] assets/lib/bootstrap5/css/bootstrap.min.css
+  → [20] assets/lib/bootstrap5/css/bootstrap.rtl.css
+  → [21] assets/lib/bootstrap5/css/bootstrap.rtl.min.css
+```
+
+As we need only `bootstrap.min.css` and `bootstrap.bundle.js`, we type
+```
+5,19
+```
+
+and press enter. Then this two files will be included to our `index.html`.
+
+After that we run `sipa i` again and just type `-` (minus) and press enter to ignore all other files in future. 
+
+Ignored files are stored in the `sipa.json` configuration where you can remove them, if you don't want to ignore them anymore.
+
+Now Bootstrap5 is successfully integrated and you can use it!
+
+## Example #3: Adding source Bootstrap 5 to your project
+
+In this case we want to use the source Bootstrap 5 files with its SCSS, to be able to modify its configuration.
+
+Download the latest source [release from Github](https://github.com/twbs/bootstrap/releases). You need the asset called `Source code (zip)`, for example [`Source code (zip)`](https://github.com/twbs/bootstrap/archive/refs/tags/v5.3.3.zip).
+
+
+### Put files into project
+
+Unzip the bootstrap archive in your project at `app/assets/lib/boostrap5`, so the file structure looks like this:
+
+```
+├── app
+│ └── assets
+│   └── lib
+│     └── bootstrap5
+│       └── scss
+│         ├── ...
+│         ├── bootstrap.scss
+│         ├── bootstrap-grid.scss
+│         ├── bootstrap-reboot.scss
+│         └── bootstrap-utilities.scss
+│       ├── js
+│       ├── ...
+```
+
+### Run Sipa Indexer
+
+We do not want to include any file of bootstrap directly into your project.
+
+So we run `sipa i` and just enter `-` (dash/minus) to ignore all bootstrap files.
+
+After that, we create a new file `app/assets/style/bootstrap5/bootstrap.scss`.
+
+Inside this file we need to include the entry file of bootstrap and can already modify some bootstrap variables for adjustments.
+
+In this example we overwrite the primary color.
+
+```scss title=app/assets/style/bootstrap5/bootstrap.scss
+$primary: #ff55e8;
+
+@import "../../lib/bootstrap5/scss/bootstrap";
+```
+
+Ensure the live development server is running already, otherwise start it with `sipa s`. It will automatically create a `bootstrap.css` of your `bootstrap.scss`.
+
+Then we run `sipa i` again and enter `+` to add the `bootstrap.css` to your project `index.html` file.
+
+### Additional tips for customizing bootstrap
+
+If you do lots of modifications, you may add a `overwrites/_variables.scss` in the same directory as your `bootstrap.scss` and import it in the latter.
+
+```scss title=app/assets/style/bootstrap5/overwrites/_variables.scss
+$primary: #ff55e8;
+```
+
+```scss title=app/assets/style/bootstrap5/bootstrap.scss
+@import "overwrites/variables";
+
+@import "../../lib/bootstrap5/scss/bootstrap";
+```
+
+:::caution SCSS file naming
+
+Note, when `.scss` file names start with underscore, there will not automatically be generated a `.css` files of them. That is what you want, if you just want to create additional `.scss` files to structure your main `.scss` file.
+Otherwise you would need to ignore that `.css` files with the sipa indexer explicitly.
+
+:::
