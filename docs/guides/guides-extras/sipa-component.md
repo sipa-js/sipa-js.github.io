@@ -203,7 +203,9 @@ You are able to nest components and make complex compositions for components in 
 
 To do so, you have to embed them in your `template()` method the declarative way.
 
-```javascript title="car-component.js"
+All embedded components must have declared by a `sipa-alias` attribute, to give them a name to access them by their parent instance.
+
+```html title="car-component.js"
 // ...
 CarComponent.template = () => {
     return `
