@@ -209,17 +209,26 @@ All embedded components must have declared by a `sipa-alias` attribute, to give 
 // ...
 CarComponent.template = () => {
     return `
-<car-component onclick="instance(this).steering_wheel.locked = false;">
+<car-component onclick="instance(this).children().steering_wheel.update({locked: false });">
     <h1><%= title %></h1>
-    <steering-wheel-component sipa-alias="steering_wheel" locked="true">
-    <wheel-component sipa-alias="wheel_front_left" state="'ok'">
-    <wheel-component sipa-alias="wheel_front_right" state="'hot'">
-    <wheel-component sipa-alias="wheel_back_left" state="'ok'">
-    <wheel-component sipa-alias="wheel_back_right" state="'broken'">
-    <brake-lights-component state="'<%= brake.put_on ? "on" : "off" %>'">
-    <starter-component attr-onclick="instance(this).parentTop().wheel_front_left.state = 'hot';">
+    <span>Locked state of steering wheel: <%= steering_wheel.locked %></span>
+    <steering-wheel-component sipa-alias="steering_wheel" locked="true"></steering-wheel-component>
+    <wheel-component sipa-alias="wheel_front_left" state="'ok'"></wheel-component>
+    <wheel-component sipa-alias="wheel_front_right" state="'hot'"></wheel-component>
+    <wheel-component sipa-alias="wheel_back_left" state="'ok'"></wheel-component>
+    <wheel-component sipa-alias="wheel_back_right" state="'broken'"></wheel-component>
+    <brake-lights-component state="'<%= brake.put_on ? 'on' : 'off' %>'"></brake-lights-component>
+    <starter-component attr-onclick="instance(this).parentTop().update({ title: 'NewCarTitle' });"></starter-component>
+    <% if(wheel_front_left.state === 'broken' && wheel_front_right.state === 'broken) { %>
+        <span class="warn-message">Both frond wheels are broken!</span>
+    <% } %>
 <car-component>    
     `.trim();
 }
 // ...
 ```
+
+In nested components, you can access children instances by `children()`, the parent top with `parent()` and the top level parent by `parentTop()` if nested over several levels.
+Of course you can access these methods not only in the template, but also in the class instance or everywhere in your code.
+
+But children data for EJS is accessible in the parent class at the attribute defined with `sipa-alias`.
