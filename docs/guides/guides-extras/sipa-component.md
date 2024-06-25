@@ -57,10 +57,7 @@ class ExampleComponent extends SipaComponent {
         // define your defaults here
         data.example ??= "world";
         super(data, opts);
-    }
-
-    onInit() {
-        // this is called after the view is added to the DOM
+        this.events().subscribe("before_destroy", this.onDestroy);
     }
 
     onDestroy() {
@@ -201,6 +198,7 @@ class MyPage extends SipaBasicView {
 ## Nesting components
 You are able to nest components and make complex compositions for components in components.
 
+### Declarative nesting
 To do so, you have to embed them in your `template()` method the declarative way.
 
 All embedded components must have declared by a `sipa-alias` attribute, to give them a name to access them by their parent instance.
@@ -232,3 +230,161 @@ In nested components, you can access children instances by `children()`, the par
 Of course you can access these methods not only in the template, but also in the class instance or everywhere in your code.
 
 But children data for EJS is accessible in the parent class at the attribute defined with `sipa-alias`.
+
+### Nesting programmatically
+
+#### Full customized nesting
+In this example we will insert the wheel-components programmatically the very custom way.
+
+The next section you will find a example using a more easy and automated way to solve this.
+
+```html title="car-component.js"
+// ...
+CarComponent.template = () => {
+    return `
+<car-component onclick="instance(this).children().steering_wheel.update({locked: false });">
+    <h1><%= title %></h1>
+    <span>Locked state of steering wheel: <%= steering_wheel.locked %></span>
+    <steering-wheel-component sipa-alias="steering_wheel" locked="true"></steering-wheel-component>
+    <div class="wheel_container"></div>
+    <brake-lights-component state="'<%= brake.put_on ? 'on' : 'off' %>'"></brake-lights-component>
+    <starter-component attr-onclick="instance(this).parentTop().update({ title: 'NewCarTitle' });"></starter-component>
+    <% if(wheel_front_left.state === 'broken' && wheel_front_right.state === 'broken) { %>
+        <span class="warn-message">Both frond wheels are broken!</span>
+    <% } %>
+<car-component>    
+    `.trim();
+}
+// ...
+```
+
+```javascript title="car-component.js"
+class CarComponent extends SipaComponent {
+    // ...
+    
+    // we instance our elements in the constructor
+    constructor(data = {}, opts = {}) {
+        // define your defaults here
+        data.example ??= "world";
+        data.wheels = [
+            new WheelComponent({ sipa_alias: "wheel_front_left", state: "ok", locked: true }),
+            new WheelComponent({ sipa_alias: "wheel_front_right", state: "hot" }),
+            new WheelComponent({ sipa_alias: "wheel_back_left", state: "ok" }),
+            new WheelComponent({ sipa_alias: "wheel_back_right", state: "broken" }),
+        ]; 
+        super(data, opts);
+    }    
+    
+    
+    // we overwrite the render method and render the elements after 
+    // the original rendering has been finished
+    render(options = {}) {
+        const result = super.render(options);
+        this._data.wheels.eachWithIndex((wheel, i) => {
+            wheel.append(`${this.selector()} > .container`);
+        });
+        return result;
+    }
+    
+    // ...
+}
+```
+
+#### Using sipa-list for generic lists
+
+As dynamic lists are a common use case, Sipa provides a feature to make the programmatically use of them very easy.
+
+When defining a `sipa-list` attribute on an element of your choice, we can reference it to a variable of type `Array` inside of `_data`.
+
+This array can contain any `SipaComponents`, even a mixed list of different ones!
+
+In case if you want even to define only one component programmatically, you can use `sipa-list` and only add one item.
+
+```js title="car-component.js"
+class MyListingComponent {
+// ...
+    constructor(data = {}, opts = {}) {
+        // define your defaults here
+        data.items = [];
+        super(data, opts);
+    }
+// ...
+    add() {
+        this._counter ??= 1;
+        this._data.items.push(new ListItemComponent({ name: randomName() }, { sipa_alias: "item_" + this._counter }));
+        this.update();
+    }
+// ...    
+}
+// ...
+MyListingComponent.template = () => {
+    return `
+<my-listing-component>
+    <h1><%= title %></h1>
+    <button onclick="instance(this).add();">Add item</button>
+    <div sipa-list="items"></div>
+<my-listing-component>    
+    `.trim();
+}
+// ...
+```
+
+To remove an item from a `sipa-list`, just call its `destroy()` method, that will automatically remove it from the list and all its references automatically!
+
+## Updating data
+
+Usually you should only use the `update()` or `resetToData()` method to update your data.
+
+### Manually modifying the `_data` attribute
+If you have a very special case, where you modify _data manually, ensure that you call the `syncNestedReferences()` method to update `_data` references to parent and children components.
+
+## Events
+By default, `SipaComponent` ships with the following events: `before_update`,`after_update`,`before_destroy`,`after_destroy`.
+
+These events are of type `SipaEvents` and can be subscribed to. A typical use case is listening to updates of children components by a parent component.
+
+```js
+class MyParentComponent {
+// ...
+    constructor(data = {}, opts = {}) {
+        // define your defaults here
+        data.items = [];
+        super(data, opts);
+        this.initTemplate(); // ensure the template and its children are initialized, otherwise this.children() will be empty
+        this.children().childy.events().subscribe("before_update", this.onBeforeChildrenUpdate);
+        this.children().childy.events().subscribe("after_update", this.onAfterChildrenUpdate);
+        this.events().createEvents("before_open","after_open"); // create new events on the fly
+    }
+// ...
+    onBeforeChildrenUpdate(child, data, options) {
+        // here we can react or even modify the 'data' and 'options' parameters of update(data, options), as they are passed by reference
+        if(data.some_data === true) {
+            data.additional_data ??= "foo";   
+        }
+    }
+// ...
+    onAfterChildrenUpdate(child, data, options) {
+        // here we can do some stuff, after the childrens update() method had been called
+        if(child._data.some_attribute === "bar") {
+            this.doSomeOtherUpdateOrAction();
+        }
+        // be aware, that child._data contains the latest data and 'data' is the original parameter data!
+    }
+// ...
+    open() {
+        this.events().trigger("before_open");
+        // some opening stuff ...   
+        const foo = "bar";
+        this.events().trigger("after_open");
+    }
+}
+// ...
+MyParentComponent.template = () => {
+    return `
+<my-parent-component>
+    <h1><%= title %></h1>
+    <my-children-component sipa-alias="childy"></my-children-component>
+<my-parent-component>    
+    `.trim();
+}
+```
