@@ -361,6 +361,10 @@ class MyParentComponent {
         if(data.some_data === true) {
             data.additional_data ??= "foo";   
         }
+        // check if some data property is beeing updated/changed
+        if(typeof data?.foo?.hasOwnProperty("bar") !== "undefined") {
+            // data.foo.bar is beeing updated
+        }
     }
 // ...
     onAfterChildrenUpdate(child, data, options) {
@@ -369,6 +373,10 @@ class MyParentComponent {
             this.doSomeOtherUpdateOrAction();
         }
         // be aware, that child._data contains the latest data and 'data' is the original parameter data!
+        // check if some data property has been updated/changed
+        if(typeof data?.other?.hasOwnProperty("example") !== "undefined") {
+            // data.other.example has been updated
+        }        
     }
 // ...
     open() {
