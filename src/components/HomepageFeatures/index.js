@@ -37,7 +37,7 @@ const FeatureList = [
         Svg: require('@site/static/img/pages/home/js_html_css.svg').default,
         description: (
             <>
-                I just want to develop with Javascript: The code i write IS the code i run in the browser.
+                I just want to develop with Javascript: The code I write IS the code I run in the browser.
                 <br/><br/>
                 Writing Javascript and HTML the old way, but using latest, modern JavaScript! So I can directly run and
                 debug my code in the browser without any special tools. Instantly!
@@ -49,7 +49,7 @@ const FeatureList = [
                 build feature. I even can create a single file production build out of the box!
                 <br/><br/>
                 I don't want to learn a new framework world.
-                I can JavaScript, I want to do JavaScript. I want it simple, I want it stupid easy. So i can add
+                I can JavaScript, I want to do JavaScript. I want it simple, I want it stupid easy. So I can add
                 whatever library I want if I need to.
                 <br/><br/>
                 Even a component system is provided. But it doesn't need transpiling, can be used or introduced
