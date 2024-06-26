@@ -16,11 +16,11 @@ A page consists of
 Before a page is loaded, a layout will be loaded first, and then the page will be put into the layout and rendered.
 
 ```md title="page life cycle"
-Trigger Page Load -> Layout is loaded -> Page is loaded
+Trigger Page Load -> Applied Layout is loaded (if not already present) -> Page is loaded
 ```
 
 ## Load another Page
-Another pages can be loaded with `SipaPage` class. When using `onsenui` use the `SipaOnsenPage` class the same way!
+Another pages can be loaded with `SipaPage` class. When using `onsenui` and mobile development, use the `SipaOnsenPage` class the same way!
 
 ```js
 // desktop
@@ -29,54 +29,35 @@ SipaPage.load('imprint', options);
 SipaOnsenPage.load('imprint', options);
 ```
 
-Documents are **groups of pages** connected through:
+## Create a new page
 
-- a **sidebar**
-- **previous/next navigation**
-- **versioning**
+To create a new page, we use the Sipa CLI with its generators at the root directory of our Sipa project:
 
-## Create your first Doc
-
-Create a Markdown file at `docs/hello.md`:
-
-```md title="docs/hello.md"
-# Hello
-
-This is my **first Docusaurus document**!
+```bash
+# start generator
+sipa g
+# choose page
+p
+# enter page name for e.g. settings page
+settings
+# or even sub settings pages
+settings/user
 ```
 
-A new document is now available at [http://localhost:3000/docs/hello](http://localhost:3000/docs/hello).
+### Structure
 
-## Configure the Sidebar
-
-Docusaurus automatically **creates a sidebar** from the `docs` folder.
-
-Add metadata to customize the sidebar label and position:
-
-```md title="docs/hello.md" {1-4}
----
-sidebar_label: 'Hi!'
-sidebar_position: 3
----
-
-# Hello
-
-This is my **first Docusaurus document**!
+A page consists always of 3 (4) files:
+```
+├── settings.js
+├── settings.html
+├── settings.scss
+└── settings.css
 ```
 
-It is also possible to create your sidebar explicitly in `sidebars.js`:
+Never modify the `css` file manually, as it is automatically compiled and overwritten by the `scss` source file!
 
-```js title="sidebars.js"
-module.exports = {
-  tutorialSidebar: [
-    'intro',
-    // highlight-next-line
-    'hello',
-    {
-      type: 'category',
-      label: 'Tutorial',
-      items: ['guides-basics/create-a-new-page'],
-    },
-  ],
-};
-```
+In the `scss` file you can even use only CSS, as SCSS is a superset of CSS.
+
+If you do not know SCSS, a variant of SASS, yet, you should start know learning it!
+
+The official website with examples and documentation can be found at https://www.sass-lang.com/
