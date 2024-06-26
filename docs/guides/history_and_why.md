@@ -22,7 +22,7 @@ So many advantages of developing native in your browser, were replaced with comp
 ## Why
 The first time I worked with one of the "big" SPAs, using Angular, i was curious about its concepts, the learning tutorials felt fluent and nice.
 
-But then working with it and solving "real" problems became very inefficent. At first i thought, it might need more time, but the time showed, that developers often were not solving problems, they always were looking for "How can i do this with Angular?". So we did not only focus on implementing our solutions, but spending a lot of time with Angular and its documentation. And it's regular updates with breaking changes, several options to solve one problem (choosing between two different form builders).
+But then working with it and solving "real" problems became very inefficent. At first i thought, it might need more time, but the time showed, that developers often were not solving problems, they always were looking for "How can i do this with Angular?". So we did not only focus on implementing our solutions, but spending a lot of time with Angular and its documentation. And it's regular updates with breaking changes, several options to solve one problem (choosing between two different form builders). It never became fluent and enjoyable, as i was get used to web development before.
 
 Get used doing my job intuitively and fluent, i felt like in an insane asylum.
 
