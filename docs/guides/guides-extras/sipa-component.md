@@ -129,10 +129,10 @@ The result of this example will be the following, rendered component:
 
 Classes on the components tag level are managed automatically, if their attribute is used twice, they will be merged.
 
-Let's access the instance of the element on the console and retrieve its data:
+Let's access the instance of the element on the console and retrieve a clone of its data:
 ```javascript 
 c = ExampleComponent.all()[0]; // get first instance of ExampleComponent
-console.log(c.data());
+console.log(c.cloneData());
 // => { example: "Pinky", other: 2 }
 ```
 
