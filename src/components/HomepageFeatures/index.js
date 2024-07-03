@@ -58,7 +58,7 @@ const FeatureList = [
                 <br/><br/>
                 A framework that gives me a frame, but doesn't force me into it.
                 <br/><br/>
-                ... and at the end I want to be a happy programmer! 😊
+                ... and at the end I want to be a happy programmer (again)! 😊
             </>
         ),
     },
