@@ -126,7 +126,8 @@ const config = {
                 defaultMode: 'dark',
                 disableSwitch: false,
                 respectPrefersColorScheme: true,
-            }
+            },
+            image: 'img/sipa/icon512.jpg'
         },
 };
 
