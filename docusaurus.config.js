@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: 'Sipa',
+    title: 'SIPA',
     tagline: 'documentation under construction (BETA)',
     url: 'https://sipa-js.github.io/',
     baseUrl: '/',
