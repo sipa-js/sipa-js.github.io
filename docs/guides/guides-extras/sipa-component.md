@@ -20,10 +20,11 @@ that you want to reuse more often or at least encapsulate into smaller, logical 
 SipaComponent has the following features:
 * Templating with [EJS](https://ejs.co/) - so it's pure Javascript
 * Component nesting - reuse components inside components
-* Global Scope and access from its ComponentClass
-* Integrated support for classes on the maine element (including its state management)
-* Integrated support for hide/show (including its state management)
+* Component slots - embed content easily
+* Global Scope and access of all components
+* Integrated support for hide/show (including its automatic state management)
 * Easy access to nested or parent components by aliases
+* Referenced data state from parents to its children
 * Auto support to render only if data changes or component is in view area (TODO)
 * Declarative and programmatically use and initialization
 
