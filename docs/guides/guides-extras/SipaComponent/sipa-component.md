@@ -1,4 +1,5 @@
 ---
+sidebar_label: Overview
 sidebar_position: 1
 ---
 
@@ -75,7 +76,7 @@ class ExampleComponent extends SipaComponent {
 ExampleComponent.template = () => {
     return `
 <example-component onclick="instance(this).showAlert();" class="template-class">
-    <span>Hello <%= example =>!</span>
+    <span>Hello <%= example => with id <%= _meta.sipa.id %>!</span>
 </example-component>
     `.trim();
 }
@@ -153,7 +154,7 @@ If we update the component, the state will be set and the view be rerendered.
 </div>
 ```
 
-Be aware, never to manipulate classes externally on your own, as their state will not be stored. Always store your state in `_data` and respect the values with EJS inside your teamplate. When you use the `removeClass()` or `addClass()` provided by SipaComponent, it will take care of its state internally. So if you rerender your component, the state will remain. If you would manipulate the DOM externally, your changes will dissappear after the next render.
+Be aware, never to manipulate classes externally in the DOM on your own, as their state will not be stored. Always store your state in `_data` and respect the values with EJS inside your teamplate. When you use the `removeClass()` or `addClass()` provided by SipaComponent, it will take care of its state internally. So if you rerender your component, the state will remain. If you would manipulate the DOM externally, your changes will dissappear after the next render.
 
 
 The initialization of declarative components can be done manually, especially when adding new components the declarative way dynamically.
@@ -337,7 +338,7 @@ To remove an item from a `sipa-list`, just call its `destroy()` method, that wil
 Usually you should only use the `update()` or `resetToData()` method to update your data.
 
 ### Manually modifying the `_data` attribute
-If you have a very special case, where you modify _data manually, ensure that you call the `syncNestedReferences()` method to update `_data` references to parent and children components.
+If you have a very special case, where you modify _data manually, ensure that you call the `update()` method after to synchronize `_data` references to parent and children components and calling its "update" events.
 
 ## Events
 By default, `SipaComponent` ships with the following events: `before_update`,`after_update`,`before_destroy`,`after_destroy`.
@@ -396,4 +397,96 @@ MyParentComponent.template = () => {
 <my-parent-component>    
     `.trim();
 }
+```
+
+## Slots
+`SipaComponent` provides slots to embed content.
+
+```html title="slot-component.js"
+// ...
+SlotComponent.template = () => {
+    return `
+<slot-component>
+    <h1><%= title %></h1>
+    This is general content
+    <slot>Default content, if no content is given</slot>
+<slot-component>    
+    `.trim();
+}
+// ...
+```
+
+For example the following definition
+
+#### declarative
+
+```html title="example-page.html raw declarative"
+<slot-component title="'MyTitle'">
+    This is <span>some</span> embedded content!
+</slot-component>
+```
+
+#### programatically
+
+```javascript title="example-page.js raw programtically"
+new SlotComponent({
+    title: "MyTitle",
+}, {
+    content: "This is <span>some</span> embedded content!",
+})
+```
+
+will result in
+
+```html title="example-page.html rendered"
+<slot-component>
+    <h1>MyTitle</h1>
+    This is general content
+    This is <span>some</span> embedded content!
+</slot-component>
+```
+
+### Named slots
+If you want to define and use several slots, you need to name them.
+
+You can use the default slot or even use named slots. A slot without name is automatically named `default`.
+
+```html title="named-slot-component.js"
+// ...
+NamedSlotComponent.template = () => {
+    return `
+<named-slot-component>
+    <h1><slot name="title"></slot></h1>
+    <slot name="default"></slot>
+    <slot name="body"></slot>
+    <slot name="footer"></slot>
+<named-slot-component>    
+    `.trim();
+}
+// ...
+```
+
+For example the following usage
+
+#### declarative
+
+```html title="example-page.html raw declarative"
+<named-slot-component>
+    <div slot="footer">(C) 2024 Company</div>
+    <span slot="title">Attention!</span>
+    Default slot content
+    <p slot="body">This is the body!</p>
+    and more
+</named-slot-component>
+```
+
+will result in
+
+```html title="example-page.html rendered"
+<named-slot-component>
+    <h1><span slot="title">Attention!</span></h1>
+    Default slot content and more
+    <p slot="body">This is the body!</p>
+    <div slot="footer">(C) 2024 Company</div>
+</named-slot-component>
 ```
