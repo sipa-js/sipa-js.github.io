@@ -113,7 +113,7 @@ Furthermore there are special attributes with the prefix `sipa-` to provide spec
 
 ```html title="my-page.html"
 <div id="some-container">
-    <example-component example="'Pinky'" other="1+1" attr-style="color: red;" attr-class="declarative-class" sipa-hidden="true"></example-component>
+    <example-component example="'Pinky'" other="1+1" attr-id="my-custom-id" attr-style="color: red;" attr-class="declarative-class" sipa-hidden="true"></example-component>
 </div>
 ```
 
@@ -134,7 +134,8 @@ Classes on the components tag level are managed automatically, if their attribut
 Let's access the instance of the element on the console and retrieve a clone of its data:
 ```javascript 
 c = ExampleComponent.all()[0]; // get first instance of ExampleComponent
-console.log(c.cloneData());
+d = ExampleComponent.byId("my-custom-id"); // get instance of ExampleComponent with attribute id="deca"
+console.log(d.cloneData());
 // => { example: "Pinky", other: 2 }
 ```
 
@@ -187,7 +188,7 @@ class MyPage extends SipaBasicView {
             example: "Pinky", 
             other: 1 + 1, 
             sipa_hidden: true, 
-            sipa_custom_attributes: { style: "color: red"}}
+            sipa_custom_attributes: { style: "color: red", id: "my-custom-id" }}
         );
         c.append("#some-container"); // append the instance to the container
         // We can also prepend the instance to the container:        
