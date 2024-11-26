@@ -134,7 +134,7 @@ Classes on the components tag level are managed automatically, if their attribut
 Let's access the instance of the element on the console and retrieve a clone of its data:
 ```javascript 
 c = ExampleComponent.all()[0]; // get first instance of ExampleComponent
-d = ExampleComponent.byId("my-custom-id"); // get instance of ExampleComponent with attribute id="deca"
+d = ExampleComponent.byId("my-custom-id"); // get instance of ExampleComponent with given id attribute
 console.log(d.cloneData());
 // => { example: "Pinky", other: 2 }
 ```
