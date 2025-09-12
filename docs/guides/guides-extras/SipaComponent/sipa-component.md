@@ -342,6 +342,46 @@ Usually you should only use the `update()` or `resetToData()` method to update y
 If you have a very special case, where you modify _data manually, ensure that you call the `update()` method after to synchronize `_data` references to parent and children components and calling its "update" events.
 
 ## Events
+
+### Default class method events
+`SipaComponent` provides some default class method events, that you can optionally define in your component class.
+
+The available events are:
+* `onDestroy()` - called, before the component is destroyed by `destroy()`
+
+Example:
+```js
+class MyComponent extends SipaComponent {
+    constructor(data = {}, opts = {}) {
+        super(data, opts);
+        this._initEventListeners();
+    }
+    // ...
+    onDestroy() {
+        // ensure to remove event listener on destroy to avoid them to 
+        // be still active and to be registered several times in feature
+        document.removeEventListener('keydown', this._eventListenerEsc);
+    }
+    // ...
+    _initEventListeners() {
+        // bind the event listener to this instance
+        this._eventListenerEsc = this._eventListenerEsc.bind(this);
+        // add the event listener
+        document.addEventListener('keydown', this._eventListenerEsc);
+    }
+    // ...
+    _eventListenerEsc(event) {
+        if (event.key === "Escape" && this?._data?.state?.is_open) {
+            alert("ESC");
+            this.close();
+        }
+    }
+}
+```
+
+### SipaEvents
+`SipaComponent`s have defined a `SipaEvents` instance at `events()` to manage events.
+
 By default, `SipaComponent` ships with the following events: `before_update`,`after_update`,`before_destroy`,`after_destroy`.
 
 These events are of type `SipaEvents` and can be subscribed to. A typical use case is listening to updates of children components by a parent component.
