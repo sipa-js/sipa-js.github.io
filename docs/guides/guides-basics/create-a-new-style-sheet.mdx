@@ -1,0 +1,24 @@
+---
+sidebar_position: 6
+---
+
+# Create a new style sheet
+
+Styling, that does not belong to a specific page or layout, should be put into general style sheet files.
+
+This can be a separate file overwriting some basic standards or general styling.
+
+They are stored in your project at `app/assets/style`.
+
+To structure your code better, you can create sub folders inside `app/assets/style`, e.g. `components/button`, `table`, `dark_mode` etc.
+
+To add a custom, general style sheet file to your Sipa project, use the Sipa CLI with its generators at the root directory of your Sipa project, so it will be included into the app automatically:
+
+```bash
+# start generator
+sipa g
+# choose javascript
+s
+# enter javascript name for e.g. my custom js
+my-custom-style
+```
