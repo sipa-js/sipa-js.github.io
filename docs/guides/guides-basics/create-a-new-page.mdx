@@ -63,3 +63,56 @@ In the `scss` file you can even use only CSS, as SCSS is a superset of CSS.
 If you do not know SCSS, a variant of SASS, yet, you should start know learning it!
 
 The official website with examples and documentation can be found at https://www.sass-lang.com/
+
+### JS page file
+The JS page file is the controller of your page. Here you can define the life cycle methods of your page, like `onInit` and `onDestroy`.
+
+```js title="settings.js"
+class SettingsPage extends SipaBasicView {
+    static onInit() {
+        const self = SettingsPage;
+        console.log('Settings page initialized');
+        self._loadSomeData();
+    }
+
+    static onDestroy() {
+        console.log('Settings page destroyed');
+    }
+
+    static save() {
+        // save settings with ajax call to backend API
+    }
+
+    static _loadSomeData() {
+        // load some data for the page
+    }
+}
+```
+
+### SCSS style sheet file
+The SCSS style sheet file is where you can define styles for your page.
+
+When using the generator, a basic style with the page selector is already included.
+
+```scss title="settings.scss"
+*[data-page-id='settings'] {
+    // Your styles here, that apply only to this page
+}
+```
+
+If you want to style elements in general, that are not specific to this page only, create a general style file.
+Inside the style file of your page, you usually only make special adjustments for this page or if you have something uniq on this page.
+
+### HTML template file
+The HTML template file is where you define the structure of your page.
+
+```html title="settings.html"
+<div class="settings-page">
+    <h1>Settings Page</h1>
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <button type="button" onclick="SettingsPage.save()">Save</button>
+    </form>
+</div>
+```

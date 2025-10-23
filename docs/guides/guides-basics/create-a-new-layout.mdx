@@ -1,0 +1,122 @@
+---
+sidebar_position: 4
+---
+
+# Create a new layout
+
+For reusing different general parts of an app, they can be put into layouts, where pages are a part of the layout.
+
+A typical use case is to put the general menu navigation into a layout. Or another layout for another context.
+
+```
+plaintext
++-----------------------------+
+|         LAYOUT              |
+|  +-----------------------+  |
+|  |       PAGE            |  |
+|  |   (content here)      |  |
+|  +-----------------------+  |
++-----------------------------+
+```
+
+You may have multiple layouts in your project. Another use case may be a layout to display a special header or sidebar for a specific section of your app. Or a layout for login forms. Or even a empty layout without any style.
+
+Every page is loaded into a layout. If you need "no" layout, just create an empty layout with an slot for the page content.
+
+Strictly speaking and put simply, a layout is essentially just another page that embeds a page. Therefore, it also consists of:
+* a HTML template file
+* a JS page file
+* a SCSS style sheet file (and its compiled CSS file)
+
+
+## Layout life cycle
+Before a page is loaded, a layout will be loaded first, and then the page will be put into the layout and rendered.
+
+```md title="layout life cycle"
+Trigger Page Load -> Applied Layout is loaded (if not already present) -> Page is loaded
+```
+
+If the layout is already loaded, it will not be loaded again, just the page will be loaded into the existing layout. This ensures better performance and no flickering.
+
+## Define layouts for pages
+A new SIPA app comes with a default layout called `default`. This layout is applied to all pages by default.
+
+To define a different layout for a page, set the `layout` attribute in `app/config/config.js`.
+
+```js title="app/config/config.js"
+SipaPage.setConfig({
+    /* default layout for all pages */
+    default_layout: 'default',
+    /* specific different layouts for other pages { <page-name>: <layout-name> } */
+    default_layouts: {
+       'login-page': 'mini-dialog',
+       'settings-page': 'with-sidebar',
+    },
+    // ...
+});
+```
+
+When loading a page, you are able to override the layout as well by passing the `layout` option to the `SipaPage.load` method.
+
+So you are able to load every page in any layout you want.
+
+```js
+SipaPage.load('settings-page', { layout_id: 'with-sidebar' });
+```
+
+## Create a new layout
+To create a new layout, we use the Sipa CLI with its generators at the root directory of our Sipa project:
+
+```bash
+# start generator
+sipa g
+# choose layout
+l
+# enter layout name for e.g. mini dialog layout
+mini-dialog
+```
+
+### Structure
+A layout consists always of 3 (4) files:
+```
+├── mini-dialog.js
+├── mini-dialog.html
+├── mini-dialog.scss
+└── mini-dialog.css
+```
+
+Never modify the `css` file manually, as it is automatically compiled and overwritten by the `scss` source file!
+
+### HTML template
+The HTML template of the layout must contain a element with the id `page-container`.
+
+For example:
+
+```html title="mini-dialog.html"
+<div class="mini-dialog-layout">
+    <div class="dialog-header">
+        <h1>Mini Dialog Layout</h1>
+    </div>
+    <div id="page-container"></div>
+</div>
+```
+
+### JS layout file
+Like the page JS file, the layout JS file must extend the `SipaBasicView` class.
+
+In general you implement at least the `onInit` method, but if necessary the `onDestroy` method as well.
+
+```js title="mini-dialog.js"
+class MiniDialogLayout extends SipaBasicView {
+    onInit() {
+        console.log('MiniDialogLayout initialized');
+    }
+    onDestroy() {
+        console.log('MiniDialogLayout destroyed');
+    }
+}
+```
+
+The `onInit` method is called when the layout is loaded. If the page but not the layout changes, the layout is not reloaded again. But it will be called again, if you load a page with another layout and then with the original layout again.
+
+The `onDestroy` method is called when the layout is unloaded. This happens, when you load a page with another layout. Here you may clean up things, like event listeners or intervals.
