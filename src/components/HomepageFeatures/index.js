@@ -7,7 +7,7 @@ import styles from './styles.module.css';
 const FeatureList = [
     {
         title: 'Javascript framework hype',
-        Svg: require('@site/static/img/pages/home/angular_react_vue.svg').default,
+        img: require('@site/static/img/pages/home/001_frameworks.png').default,
         description: (
             <>
                 Have you also wondered why more and more big JavaScript frameworks have appeared in the last few years,
@@ -34,7 +34,7 @@ const FeatureList = [
     },
     {
         title: 'Why Sipa?',
-        Svg: require('@site/static/img/pages/home/js_html_css.svg').default,
+        img: require('@site/static/img/pages/home/002_web_standards.png').default,
         description: (
             <>
                 I just want to develop with Javascript: The code I write IS the code I run in the browser.
@@ -64,7 +64,7 @@ const FeatureList = [
     },
     {
         title: 'Main features',
-        Svg: require('@site/static/img/pages/home/sipa_features.svg').default,
+        img: require('@site/static/img/pages/home/003_tools.png').default,
         description: (
             <>
                 <ul style={{textAlign: "left"}}>
@@ -92,11 +92,15 @@ const FeatureList = [
     },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({Svg, img, title, description}) {
     return (
         <div className={clsx('col col--4')}>
             <div className="text--center">
-                <Svg className={styles.featureSvg} role="img"/>
+                {Svg ? (
+                    <Svg className={styles.featureSvg} role="img"/>
+                ) : img ? (
+                    <img className={styles.featureSvg} src={img} alt={title} />
+                ) : null}
             </div>
             <div className="text--center padding-horiz--md">
                 <h3>{title}</h3>
@@ -105,6 +109,7 @@ function Feature({Svg, title, description}) {
         </div>
     );
 }
+
 
 export default function HomepageFeatures() {
     return (
