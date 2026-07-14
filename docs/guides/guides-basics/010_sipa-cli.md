@@ -30,3 +30,72 @@ sipa h       # short cut suggested to use
 sipa -h      # alias
 sipa --help  # alias
 ```
+
+## Non-interactive usage (parameters)
+
+Every interactive command can also be driven completely through long CLI parameters (`--parameter=value`), without any interaction. This makes it easy to integrate Sipa into pipelines, scripts and CI, and lets AI agents interact with it reliably.
+
+### Basic rules
+
+* Parameters use long options only (`--name=value`). There are no short forms for parameters.
+* Command shortcuts (`g`, `n`, `s`, ...) still work.
+* Any missing mandatory value falls back to the interactive prompt, so you can also provide only some parameters.
+* Task specific help is available via `sipa <command> --help`.
+
+### Create a new project
+
+```bash
+sipa new --name=my-app --type=desktop --version=1.0.0 --author="Jane Doe" --email=jane@example.com
+sipa n --name=my-app --type=mobile
+```
+
+### Generate assets
+
+```bash
+sipa generate --type=page --name=settings/user
+sipa g --type=component --name=dropdown
+sipa g --type=style --name=modes/dark-mode
+```
+
+### Indexer
+
+```bash
+sipa indexer --list                 # list missing and invalid entries
+sipa indexer --auto                 # add all missing and remove all invalid entries
+sipa indexer --add=1,4,5 --ignore=2,3   # add and ignore specific entries by index
+sipa indexer --dry-run              # preview changes without applying
+```
+
+### Build
+
+```bash
+sipa build --no-minify-js --no-minify-css
+sipa build --dist-path=dist/custom
+sipa build --dry-run
+```
+
+### Server
+
+```bash
+sipa server --port=8080 --host=127.0.0.1
+sipa server --no-open
+```
+
+### Machine readable info
+
+```bash
+sipa version --json
+sipa about --json
+sipa license --json
+```
+
+### Task specific help
+
+```bash
+sipa generate --help
+sipa help generate
+```
+
+:::tip
+Since no interaction is required, this is the recommended way to use Sipa inside pipelines, scripts and CI, or to let AI agents work with your project.
+:::
