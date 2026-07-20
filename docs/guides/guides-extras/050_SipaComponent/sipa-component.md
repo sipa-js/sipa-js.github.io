@@ -26,7 +26,7 @@ SipaComponent has the following features:
 * Integrated support for hide/show (including its automatic state management)
 * Easy access to nested or parent components by aliases
 * Referenced data state from parents to its children
-* Auto support to render only if data changes or component is in view area (TODO)
+* Throttled re-rendering and node caching for performance (`sipa_render_period`, `sipa_cache`)
 * Declarative and programmatically use and initialization
 
 ## Create a new component
@@ -76,7 +76,7 @@ class ExampleComponent extends SipaComponent {
 ExampleComponent.template = () => {
     return `
 <example-component onclick="instance(this).showAlert();" class="template-class">
-    <span>Hello <%= example => with id <%= _meta.sipa.id %>!</span>
+    <span>Hello <%= example %> with id <%= _meta.sipa.id %>!</span>
 </example-component>
     `.trim();
 }
@@ -155,7 +155,7 @@ If we update the component, the state will be set and the view be rerendered.
 </div>
 ```
 
-Be aware, never to manipulate classes externally in the DOM on your own, as their state will not be stored. Always store your state in `_data` and respect the values with EJS inside your teamplate. When you use the `removeClass()` or `addClass()` provided by SipaComponent, it will take care of its state internally. So if you rerender your component, the state will remain. If you would manipulate the DOM externally, your changes will dissappear after the next render.
+Be aware, never to manipulate classes externally in the DOM on your own, as their state will not be stored. Always store your state in `_data` and respect the values with EJS inside your template. When you use the `removeClass()` or `addClass()` provided by SipaComponent, it will take care of its state internally. So if you rerender your component, the state will remain. If you would manipulate the DOM externally, your changes will disappear after the next render.
 
 
 The initialization of declarative components can be done manually, especially when adding new components the declarative way dynamically.
@@ -172,9 +172,9 @@ SipaHooks.beforeInitPage('on', () => {
 // ...
 ```
 
-### Initialize programatically
+### Initialize programmatically
 
-The same result as shown before the declarative way can be archived by the following HTML and Javascript code:
+The same result as shown before the declarative way can be achieved by the following HTML and Javascript code:
 ```html title="my-page.html"
 <div id="some-container">
 </div>
@@ -220,10 +220,10 @@ CarComponent.template = () => {
     <wheel-component sipa-alias="wheel_back_right" state="'broken'"></wheel-component>
     <brake-lights-component state="'<%= brake.put_on ? 'on' : 'off' %>'"></brake-lights-component>
     <starter-component attr-onclick="instance(this).parentTop().update({ title: 'NewCarTitle' });"></starter-component>
-    <% if(wheel_front_left.state === 'broken' && wheel_front_right.state === 'broken) { %>
-        <span class="warn-message">Both frond wheels are broken!</span>
+    <% if(wheel_front_left.state === 'broken' && wheel_front_right.state === 'broken') { %>
+        <span class="warn-message">Both front wheels are broken!</span>
     <% } %>
-<car-component>    
+</car-component>    
     `.trim();
 }
 // ...
@@ -252,10 +252,10 @@ CarComponent.template = () => {
     <div class="wheel_container"></div>
     <brake-lights-component state="'<%= brake.put_on ? 'on' : 'off' %>'"></brake-lights-component>
     <starter-component attr-onclick="instance(this).parentTop().update({ title: 'NewCarTitle' });"></starter-component>
-    <% if(wheel_front_left.state === 'broken' && wheel_front_right.state === 'broken) { %>
-        <span class="warn-message">Both frond wheels are broken!</span>
+    <% if(wheel_front_left.state === 'broken' && wheel_front_right.state === 'broken') { %>
+        <span class="warn-message">Both front wheels are broken!</span>
     <% } %>
-<car-component>    
+</car-component>    
     `.trim();
 }
 // ...
@@ -284,7 +284,7 @@ class CarComponent extends SipaComponent {
     render(options = {}) {
         const result = super.render(options);
         this._data.wheels.eachWithIndex((wheel, i) => {
-            wheel.append(`${this.selector()} > .container`);
+            wheel.append(`${this.selector()} > .wheel_container`);
         });
         return result;
     }
@@ -304,7 +304,7 @@ This array can contain any `SipaComponents`, even a mixed list of different ones
 In case if you want even to define only one component programmatically, you can use `sipa-list` and only add one item.
 
 ```js title="car-component.js"
-class MyListingComponent {
+class MyListingComponent extends SipaComponent {
 // ...
     constructor(data = {}, opts = {}) {
         // define your defaults here
@@ -326,7 +326,7 @@ MyListingComponent.template = () => {
     <h1><%= title %></h1>
     <button onclick="instance(this).add();">Add item</button>
     <div sipa-list="items"></div>
-<my-listing-component>    
+</my-listing-component>    
     `.trim();
 }
 // ...
@@ -387,7 +387,7 @@ By default, `SipaComponent` ships with the following events: `before_update`,`af
 These events are of type `SipaEvents` and can be subscribed to. A typical use case is listening to updates of children components by a parent component.
 
 ```js
-class MyParentComponent {
+class MyParentComponent extends SipaComponent {
 // ...
     constructor(data = {}, opts = {}) {
         // define your defaults here
@@ -404,9 +404,9 @@ class MyParentComponent {
         if(data.some_data === true) {
             data.additional_data ??= "foo";   
         }
-        // check if some data property is beeing updated/changed
+        // check if some data property is being updated/changed
         if(data?.foo?.hasOwnProperty("bar")) {
-            // data.foo.bar is beeing updated
+            // data.foo.bar is being updated
         }
     }
 // ...
@@ -435,7 +435,7 @@ MyParentComponent.template = () => {
 <my-parent-component>
     <h1><%= title %></h1>
     <my-children-component sipa-alias="childy"></my-children-component>
-<my-parent-component>    
+</my-parent-component>    
     `.trim();
 }
 ```
@@ -451,7 +451,7 @@ SlotComponent.template = () => {
     <h1><%= title %></h1>
     This is general content
     <slot>Default content, if no content is given</slot>
-<slot-component>    
+</slot-component>    
     `.trim();
 }
 // ...
@@ -467,9 +467,9 @@ For example the following definition
 </slot-component>
 ```
 
-#### programatically
+#### programmatically
 
-```javascript title="example-page.js raw programtically"
+```javascript title="example-page.js raw programmatically"
 new SlotComponent({
     title: "MyTitle",
 }, {
@@ -501,7 +501,7 @@ NamedSlotComponent.template = () => {
     <slot name="default"></slot>
     <slot name="body"></slot>
     <slot name="footer"></slot>
-<named-slot-component>    
+</named-slot-component>    
     `.trim();
 }
 // ...
