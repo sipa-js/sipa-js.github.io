@@ -1,0 +1,8 @@
+{
+  "label": "Project configuration",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "How to configure your Sipa project: the project and build configuration in sipa.json, and the application runtime configuration in app/config/config.js."
+  }
+}
