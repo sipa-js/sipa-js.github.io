@@ -25,7 +25,7 @@ Every page is loaded into a layout. If you need "no" layout, just create an empt
 
 Strictly speaking and put simply, a layout is essentially just another page that embeds a page. Therefore, it also consists of:
 * a HTML template file
-* a JS page file
+* a JS layout file
 * a SCSS style sheet file (and its compiled CSS file)
 
 
@@ -41,7 +41,7 @@ If the layout is already loaded, it will not be loaded again, just the page will
 ## Define layouts for pages
 A new SIPA app comes with a default layout called `default`. This layout is applied to all pages by default.
 
-To define a different layout for a page, set the `layout` attribute in `app/config/config.js`.
+To define a different layout for a page, set the `default_layouts` attribute in `app/config/config.js`.
 
 ```js title="app/config/config.js"
 SipaPage.setConfig({
@@ -56,7 +56,7 @@ SipaPage.setConfig({
 });
 ```
 
-When loading a page, you are able to override the layout as well by passing the `layout` option to the `SipaPage.load` method.
+When loading a page, you are able to override the layout as well by passing the `layout_id` option to the `SipaPage.load` method.
 
 So you are able to load every page in any layout you want.
 
@@ -108,10 +108,10 @@ In general you implement at least the `onInit` method, but if necessary the `onD
 
 ```js title="mini-dialog.js"
 class MiniDialogLayout extends SipaBasicView {
-    onInit() {
+    static onInit() {
         console.log('MiniDialogLayout initialized');
     }
-    onDestroy() {
+    static onDestroy() {
         console.log('MiniDialogLayout destroyed');
     }
 }
