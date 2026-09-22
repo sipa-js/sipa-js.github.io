@@ -3,6 +3,17 @@
   align-items: center;
   padding: 2rem 0;
   width: 100%;
+  background-color: var(--sipa-color-gray);
+  color: #fff;
+
+  h3 {
+    color: #fff;
+  }
+
+  p,
+  li {
+    color: #fff;
+  }
 }
 
 .featureSvg {

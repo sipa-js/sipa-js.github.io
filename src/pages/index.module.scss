@@ -1,0 +1,26 @@
+/**
+ * SCSS module files (.module.scss) are treated as CSS modules and scoped
+ * locally, but are additionally run through the SASS compiler.
+ */
+
+.heroBanner {
+  padding: 1rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  @media screen and (max-width: 996px) {
+    padding: 0.75rem;
+  }
+}
+
+.logo {
+  max-width: 70%;
+  height: auto;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
