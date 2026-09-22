@@ -11,21 +11,21 @@ const FeatureList = [
         description: (
             <>
                 Have you also wondered why more and more big JavaScript frameworks have appeared in the last few years,
-                often sponsored by well-known companies and offering somehow interesting concepts, but not having much
+                often sponsored by well-known companies and offering somewhat interesting concepts, but not having much
                 in common with the original JavaScript?
                 <br/><br/>
                 Did you have the impression that completely new worlds were developed there, as if you had to learn a
                 new language?
                 <br/><br/>
-                Did you have the impression that development used to be much easier and more intuitive before this
+                Did you have the impression that development used to be much easier and more intuitive before these
                 frameworks appeared?
                 <br/><br/>
                 Does it annoy you that you write code that has not much to do with the code that is executed in the
                 browser? Would you rather just be able to run and debug your code in the browser?
                 <br/><br/>
-                Do you prefer to choose the libraries you need and combine them to your own project?
+                Do you prefer to choose the libraries you need and combine them into your own project?
                 <br/><br/>
-                Have you considered building your own lightweight framework and add the libraries you need to?
+                Have you considered building your own lightweight framework and adding the libraries you need?
                 <br/><br/>
                 If you find yourself somewhere in the questions here, you might really like Sipa.
                 <br/><br/>
@@ -39,26 +39,26 @@ const FeatureList = [
             <>
                 I just want to develop with Javascript: The code I write IS the code I run in the browser.
                 <br/><br/>
-                Writing Javascript and HTML the old way, but using latest, modern JavaScript! So I can directly run and
-                debug my code in the browser without any special tools. Instantly!
+                Writing Javascript and HTML the old way, but using the latest, modern JavaScript! So I can directly run
+                and debug my code in the browser without any special tools. Instantly!
                 <br/><br/>
                 No modules! Really? Really!
                 <br/><br/>
-                Intensive transpiling is even not necessary, you can deploy 1:1 your code if you want to. But of course
+                Intensive transpiling is not even necessary, you can deploy 1:1 your code if you want to. But of course
                 you can transpile the project for uglifying and minifying/compressing your code using the production
-                build feature. I even can create a single file production build out of the box!
+                build feature. I can even create a single file production build out of the box!
                 <br/><br/>
                 I don't want to learn a new framework world.
                 I can JavaScript, I want to do JavaScript. I want it simple, I want it stupid easy. So I can add
                 whatever library I want if I need to.
                 <br/><br/>
-                Even a component system is provided. But it doesn't need transpiling, can be used or introduced
-                separately in other projects without even using sipa itself! And it has no own language, it uses EJS, so
-                it's just pure JavaScript!
+                Even a component system is provided. But it doesn't need transpiling and can be used or introduced
+                separately in other projects without even using Sipa itself! And it has no language of its own, it
+                uses EJS, so it's just pure JavaScript!
                 <br/><br/>
                 A framework that gives me a frame, but doesn't force me into it.
                 <br/><br/>
-                ... and at the end I want to be a happy programmer (again)! 😊
+                ... and in the end I want to be a happy programmer (again)! 😊
             </>
         ),
     },
@@ -80,7 +80,7 @@ const FeatureList = [
                     <li>Good old jQuery</li>
                 </ul>
                 <br/>
-                To get an overview and idea about the framework, have a look at <div className={styles.buttons}>
+                To get an overview of the framework, take a look at: <div className={styles.buttons}>
                 <Link
                     className="button button--secondary button--lg"
                     to="/docs/guides/overview">
